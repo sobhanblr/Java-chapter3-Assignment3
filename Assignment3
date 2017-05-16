@@ -1,0 +1,43 @@
+//Assignment 3
+//Write a java program which generates a random number such that 0 <= Random Number <= N
+//-1* where N is a given input number.
+
+
+public class randomnumber {
+	public static void main(String[] args) 
+	{
+	int n=1;
+	int k=1;
+
+	        int range = n-1;
+	        int bits = 0;
+	        Random r = new Random();
+	        while(range>0) {
+	            range = range>>1;
+	            bits++;
+	        }
+	        System.out.println("bits: "+bits);
+	        //int[] freq = new int[n];
+	        int count = 0;
+	        for(int i=0;i<k;i++) {
+	            int steps  = 0;
+	            while(true) {
+	                int randomNum = 0;
+	                steps++;
+	                for(int j=0;j<bits;j++) {
+
+	                    randomNum = randomNum<<1|(r.nextInt(2));
+	                }
+	                if(randomNum<n) {
+	                    System.out.println("Random Number: "+randomNum+" steps: "+steps);
+	                    //freq[randomNum]++;
+	                    count = count + steps;
+	                    break;
+	                }
+
+	            }
+	        }
+	        System.out.println("average steps: "+(float)(count)/k);
+
+	    }
+}
